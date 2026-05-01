@@ -1,0 +1,321 @@
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #0f1117;
+  --surface:     #1a1d27;
+  --surface2:    #22263a;
+  --border:      #2e3245;
+  --accent:      #6c63ff;
+  --accent-h:    #5a52e0;
+  --danger:      #e05252;
+  --success:     #3ecf8e;
+  --warning:     #f59e0b;
+  --text:        #e8eaf6;
+  --text-muted:  #8b90a7;
+  --radius:      10px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.4);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Alerts ───────────────────────────────────────────────────────────────── */
+.alert {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.alert-error   { background: rgba(224,82,82,0.15); color: #f88; border: 1px solid rgba(224,82,82,0.3); }
+.alert-success { background: rgba(62,207,142,0.12); color: #5ef5b5; border: 1px solid rgba(62,207,142,0.3); }
+.alert-top { margin-bottom: 24px; }
+
+/* ── Auth Layout ──────────────────────────────────────────────────────────── */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 60% 20%, #1e1a4a 0%, var(--bg) 65%);
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ── Forms ────────────────────────────────────────────────────────────────── */
+.form { display: flex; flex-direction: column; gap: 16px; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-group select option { background: var(--surface2); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn {
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.18s, opacity 0.18s, transform 0.12s;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.btn-primary  { background: var(--accent);  color: #fff; width: 100%; margin-top: 4px; }
+.btn-primary:hover:not(:disabled) { background: var(--accent-h); }
+
+.btn-edit   { background: var(--surface2); color: var(--text);    border: 1px solid var(--border); }
+.btn-edit:hover   { border-color: var(--accent); color: var(--accent); }
+
+.btn-delete { background: transparent; color: var(--danger); border: 1px solid rgba(224,82,82,0.35); }
+.btn-delete:hover { background: rgba(224,82,82,0.1); }
+
+.btn-save   { background: var(--accent); color: #fff; }
+.btn-save:hover { background: var(--accent-h); }
+
+.btn-cancel { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); }
+.btn-cancel:hover { color: var(--text); }
+
+.btn-logout {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(224,82,82,0.35);
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+.btn-logout:hover { background: rgba(224,82,82,0.1); }
+
+/* ── Navbar ───────────────────────────────────────────────────────────────── */
+.navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-user {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── Dashboard Layout ─────────────────────────────────────────────────────── */
+.dashboard { min-height: 100vh; display: flex; flex-direction: column; }
+
+.dashboard-main {
+  max-width: 1100px;
+  width: 100%;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.create-card { margin-bottom: 36px; }
+.create-card h2 { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted); }
+
+.create-form { display: flex; flex-direction: column; gap: 14px; }
+.create-form .btn-primary { width: auto; align-self: flex-start; margin-top: 0; padding: 10px 28px; }
+
+/* ── Tasks Section ────────────────────────────────────────────────────────── */
+.tasks-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-count {
+  background: var(--surface2);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.empty-state {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 60px 0;
+  font-size: 0.95rem;
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.task-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.task-card:hover { border-color: #3d4160; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.task-card--editing { border-color: var(--accent); }
+
+.task-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.task-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.task-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ── Status Badges ────────────────────────────────────────────────────────── */
+.badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.badge-pending  { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+.badge-progress { background: rgba(108,99,255,0.18); color: #a5b4fc; border: 1px solid rgba(108,99,255,0.35); }
+.badge-done     { background: rgba(62,207,142,0.15); color: #34d399; border: 1px solid rgba(62,207,142,0.3); }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+  .navbar { padding: 12px 16px; }
+  .dashboard-main { padding: 0 14px; margin: 20px auto; }
+  .auth-card { padding: 28px 20px; }
+}
